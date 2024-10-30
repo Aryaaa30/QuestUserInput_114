@@ -40,8 +40,8 @@ fun UserInput(modifier: Modifier = Modifier){
     var textNoHp by remember { mutableStateOf("") }
     var textAlamat by remember { mutableStateOf("") }
 
-    var jenisJk by remember { mutableStateOf("") }
-    var textJK by remember { mutableStateOf("") }
+    var jenisKelamin by remember { mutableStateOf("") }
+    var dataJenisKelamin by remember { mutableStateOf("") }
 
     val dataJK = listOf("L" , "P")
 
@@ -60,11 +60,11 @@ fun UserInput(modifier: Modifier = Modifier){
             placeholder = { Text("Masukkan Nama Anda") }
         )
         Row {
-            textJK.forEach {selectedJK ->
-                Row {
-                    RadioButton(selected = jenisJk == selectedJK,
+            dataJK.forEach {selectedJK ->
+                Row (verticalAlignment = Alignment.CenterVertically){
+                    RadioButton(selected = jenisKelamin == selectedJK,
                         onClick = {
-                            jenisJk = selectedJK
+                            jenisKelamin = selectedJK
                         })
                     Text(selectedJK)
                 }
@@ -96,7 +96,7 @@ fun UserInput(modifier: Modifier = Modifier){
 
         Button(onClick = {
             textNama = nama
-            textJK = jenisJk
+            dataJenisKelamin = jenisKelamin
             textEmail = email
             textNoHp = noHp
             textAlamat = alamat
@@ -113,7 +113,7 @@ fun UserInput(modifier: Modifier = Modifier){
                 )
                 TampilData(
                     judul = "Jenis Kelamin",
-                    isinya = textJK
+                    isinya = dataJenisKelamin
                 )
                 TampilData(
                     judul = "Email",
